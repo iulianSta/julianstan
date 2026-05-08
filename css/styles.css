@@ -146,3 +146,7 @@ body {
     --accent: #3898ec;
     --accent-dim: rgba(56, 152, 236, .15);
 }
+
+.legal span {
+    margin-right: 10px;
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impressum — Julian Stan</title>
+
+    <script>
+        window.tailwind = {
+            theme: {
+                extend: {
+                    colors: {
+                        bg: 'var(--bg)',
+                        surface: 'var(--surface)',
+                        surface2: 'var(--surface2)',
+                        accent: 'var(--accent)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+
+    <style>
+        :root {
+            --bg: #111114;
+            --surface: #18181c;
+            --surface2: #1e1e23;
+            --text: #f0f0f2;
+            --muted: #8a8a9a;
+            --accent: #3898ec;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen px-6 py-16">
+    <div class="max-w-3xl mx-auto">
+
+        <h1 class="text-4xl font-bold mb-10">Impressum</h1>
+
+        <div class="space-y-4 text-lg text-gray-300">
+            <p>Julian Stan</p>
+            <p>Frontend Developer</p>
+            <p>04600 Altenburg, Germany</p>
+
+            <div class="pt-4">
+                <p>Email:</p>
+                <a href="mailto:info@julianstan.com"
+                   class="text-blue-400 hover:text-blue-300 transition">
+                   info@julianstan.com
+                </a>
+            </div>
+        </div>
+
+        <div class="mt-16">
+            <a href="../index.html"
+               class="text-blue-400 hover:text-blue-300 transition">
+               ← Back to Home
+            </a>
+        </div>
+
+    </div>
+</body>
+</html>
