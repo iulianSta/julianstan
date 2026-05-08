@@ -82,7 +82,7 @@ const defaultConfig = {
     hero_headline: 'Frontend Developer building clean, modern web experiences.',
     hero_subheadline: 'React, Next.js, JavaScript, UX/UI and real-world problem solving.',
     about_text: 'Technical professional with a strong hands-on background, transitioning experience into modern frontend development. Reliable, fast learner, and a natural problem solver who thrives in collaborative environments.',
-    contact_email: 'hello@julianstan.com',
+    contact_email: 'info@julianstan.com',
     contact_location: 'Altenburg / Leipzig Area',
     background_color: '#111114',
     surface_color: '#18181c',
@@ -124,27 +124,3 @@ function applyConfig(config) {
     document.getElementById('contact-email-card').href = 'mailto:' + c.contact_email;
     document.getElementById('contact-location-text').textContent = c.contact_location;
 }
-
-window.elementSdk.init({
-    defaultConfig,
-    onConfigChange: async (config) => applyConfig(config),
-    mapToCapabilities: (config) => ({
-        recolorables: [
-            { get: () => config.background_color || defaultConfig.background_color, set: (v) => { config.background_color = v; window.elementSdk.setConfig({ background_color: v }) } },
-            { get: () => config.surface_color || defaultConfig.surface_color, set: (v) => { config.surface_color = v; window.elementSdk.setConfig({ surface_color: v }) } },
-            { get: () => config.text_color || defaultConfig.text_color, set: (v) => { config.text_color = v; window.elementSdk.setConfig({ text_color: v }) } },
-            { get: () => config.accent_color || defaultConfig.accent_color, set: (v) => { config.accent_color = v; window.elementSdk.setConfig({ accent_color: v }) } },
-            { get: () => config.muted_color || defaultConfig.muted_color, set: (v) => { config.muted_color = v; window.elementSdk.setConfig({ muted_color: v }) } }
-        ],
-        borderables: [],
-        fontEditable: { get: () => config.font_family || defaultConfig.font_family, set: (v) => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }) } },
-        fontSizeable: { get: () => config.font_size || defaultConfig.font_size, set: (v) => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }) } }
-    }),
-    mapToEditPanelValues: (config) => new Map([
-        ['hero_headline', config.hero_headline || defaultConfig.hero_headline],
-        ['hero_subheadline', config.hero_subheadline || defaultConfig.hero_subheadline],
-        ['about_text', config.about_text || defaultConfig.about_text],
-        ['contact_email', config.contact_email || defaultConfig.contact_email],
-        ['contact_location', config.contact_location || defaultConfig.contact_location]
-    ])
-});
