@@ -2,12 +2,15 @@
 document.querySelector("#year").textContent = new Date().getFullYear();
 
 // Data
-const skills = ['React', 'Next.js', 'JavaScript', 'TypeScript', 'Tailwind CSS', 'HTML', 'CSS', 'Git', 'REST APIs', 'Figma', 'UX/UI'];
+const skills = ['React', 'Next.js', 'PHP', 'WordPress', 'JavaScript', 'TypeScript', 'Tailwind CSS', 'HTML', 'CSS', 'Git', 'REST APIs', 'Figma', 'UX/UI'];
 const projects = [
-    { title: 'Portfolio Website', desc: 'Personal portfolio built with modern web technologies and clean design principles.', tags: ['React', 'Tailwind CSS', 'Responsive'], icon: 'globe' },
-    { title: 'React App', desc: 'Interactive React application with state management and dynamic UI components.', tags: ['React', 'JavaScript', 'API'], icon: 'code-2' },
-    { title: 'Business Landing Page', desc: 'High-converting landing page for a startup with optimized performance.', tags: ['Next.js', 'SEO', 'Animation'], icon: 'rocket' },
-    { title: 'Dashboard UI Concept', desc: 'Data visualization dashboard with clean information architecture.', tags: ['TypeScript', 'Figma', 'UX/UI'], icon: 'layout-dashboard' }
+    { title: 'Portfolio Website', desc: 'Personal portfolio showcasing selected web development projects and technical work. This website includes all featured projects.', tags: ['HTML', 'Tailwind CSS', 'Responsive', 'Web Design'], icon: 'globe' },
+    { title: 'Andreea Stan Portfolio', desc: 'Design and development of a responsive client portfolio website. Live project hosted and accessible online.', tags: ['HTML', 'Tailwind CSS', 'Responsive', 'Legal Pages'], icon: 'link', link: 'https://andreea-stan.com' },
+    { title: 'Dreamspace – Interior Design Concept', desc: 'Customizable Bootstrap interior design website with modern responsive UI.', tags: ['HTML', 'Bootstrap', 'Responsive', 'UI Design'], icon: 'home', link: 'https://iuliansta.github.io/interior-design/' },
+    { title: 'HouseHunt – Real Estate Listing Platform', desc: 'Responsive real estate website concept featuring property listings, filtering system and interactive UI components.', tags: ['HTML', 'Bootstrap', 'JavaScript', 'jQuery', 'Isotope', 'Owl Carousel', 'Responsive'], icon: 'building', link: 'https://iuliansta.github.io/real-estate/' },
+    // { title: 'React App', desc: 'Interactive React application with state management and dynamic UI components.', tags: ['React', 'JavaScript', 'API'], icon: 'code-2' },
+    // { title: 'Business Landing Page', desc: 'High-converting landing page for a startup with optimized performance.', tags: ['Next.js', 'SEO', 'Animation'], icon: 'rocket' },
+    // { title: 'Dashboard UI Concept', desc: 'Data visualization dashboard with clean information architecture.', tags: ['TypeScript', 'Figma', 'UX/UI'], icon: 'layout-dashboard' }
 ];
 const experiences = [
     { role: 'Web Coordination / UX Improvements', org: 'Code for Romania', desc: 'Contributed to civic tech projects improving user experience and web coordination for community-driven platforms.', icon: 'heart' },
@@ -27,9 +30,17 @@ skills.forEach((s, i) => {
 // Render projects
 const pg = document.getElementById('projects-grid');
 projects.forEach((p, i) => {
-    const d = document.createElement('div');
-    d.className = `sr sr-d${Math.min(i + 1, 4)} project-card p-6 rounded-xl border cursor-default`;
+    const d = document.createElement('a');
+    const isClickable = !!p.link;
+    d.className = `sr sr-d${Math.min(i + 1, 4)} project-card p-6 rounded-xl border ${isClickable ? 'cursor-pointer' : 'cursor-default'}`;
     d.style.cssText = `background:var(--surface);border-color:rgba(255,255,255,.06)`;
+    if (isClickable) {
+        d.href = p.link;
+        d.target = '_blank';
+        d.rel = 'noopener noreferrer';
+    } else {
+        d.href = 'javascript:void(0)';
+    }
     d.innerHTML = `
 <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background:var(--accent-dim)">
 <i data-lucide="${p.icon}" style="width:20px;height:20px;color:var(--accent)"></i>
@@ -80,10 +91,10 @@ document.querySelectorAll('#mobile-menu a').forEach(a => a.addEventListener('cli
 // Element SDK
 const defaultConfig = {
     hero_headline: 'Frontend Developer building clean, modern web experiences.',
-    hero_subheadline: 'React, Next.js, JavaScript, UX/UI and real-world problem solving.',
+    hero_subheadline: 'React, Next.js, JavaScript, PHP, UX/UI and real-world problem solving.',
     about_text: 'Technical professional with a strong hands-on background, transitioning experience into modern frontend development. Reliable, fast learner, and a natural problem solver who thrives in collaborative environments.',
     contact_email: 'info@julianstan.com',
-    contact_location: 'Altenburg / Leipzig Area',
+    contact_location: 'Altenburg, Germany',
     background_color: '#111114',
     surface_color: '#18181c',
     text_color: '#f0f0f2',
@@ -124,3 +135,5 @@ function applyConfig(config) {
     document.getElementById('contact-email-card').href = 'mailto:' + c.contact_email;
     document.getElementById('contact-location-text').textContent = c.contact_location;
 }
+
+applyConfig(defaultConfig);
